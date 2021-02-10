@@ -1,0 +1,191 @@
+<main >
+    <form [formGroup]="addRecipeForm" (ngSubmit)="onSubmit()" >
+        <fieldset id="top-page">
+            <legend>Ajouter une recette</legend>
+            <mat-form-field class="app-mat-form-field-recipeName" appearance="outline">
+                <mat-label>Nom de la recette <span class="app-required">*</span></mat-label>
+                <input matInput formControlName="name" #inputRecipeName placeholder="Ex. Nougat" autofocus>
+                <mat-hint>Min 3 caractères</mat-hint>
+            </mat-form-field>
+            <div class="app-div-two-input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Temps de cuisson <span class="app-required">*</span></mat-label>
+                    <input matInput type="time" formControlName="cookingTime"  #inputRecipeCookingTime>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Temps de préparation <span class="app-required">*</span></mat-label>
+                    <input matInput type="time" formControlName="preparationTime"  #inputRecipePreparationTime>
+                </mat-form-field>
+            </div>
+            <div class="app-div-two-input">
+                <mat-form-field class="app-difficulty" formGroupName="difficulty" appearance="outline">
+                    <mat-label>Difficulté <span class="app-required">*</span></mat-label>
+                    <mat-select formControlName="id">
+                        <mat-option *ngFor="let difficulty of allDifficultys" [value]="difficulty.id" >
+                            {{difficulty.nameDifficulty}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="app-div-numberOfPeople">
+                    <button 
+                        (click)="removePerson()"
+                        class="app-button-remove-person" 
+                        type="button">
+                        <mat-icon>remove</mat-icon>
+                    </button>
+                    <mat-form-field class="app-mat-numberOfPeople" appearance="outline">
+                        <mat-label>Nombre de personnes <span class="app-required">*</span></mat-label>
+                        <input matInput type="number" formControlName="numberOfPeople"  #inputRecipeNumberOfPeople
+                        >
+                    </mat-form-field>
+                    <button 
+                        (click)="addPerson()"
+                        class="app-button-add-person"
+                        type="button">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="app-div-two-input">
+                <div class="app-div-addImg">
+                    <div>
+                        <input 
+                            class="app-input-addImg"
+                            type="file" 
+                            (change)="onFileChanged($event)"
+                            #inputRecipePosterName>
+                        <button 
+                            class="app-button-addImg"
+                            (click)="inputRecipePosterName.click()"
+                            type="button" 
+                            mat-raised-button 
+                            color="primary">
+                            Ajouter une image
+                        </button>
+                    </div>
+                </div>
+                <div class="app-image-name">
+                    <span>{{imageName}}</span>
+                    <span [hidden]="!imageName"><mat-icon color='primary'>check_circle</mat-icon></span>
+                </div>
+            </div>
+            <mat-accordion>
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Ajouter des Ingrédients
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-form-field class="app-mat-form-field-chip-ingredients" appearance="outline">
+                        <mat-chip-list #inputChipIngredientsList>
+                            <mat-chip
+                                *ngFor="let ingredient of ingredientsRecipe.controls; index as i"                 
+                                [removable]="true"
+                                (removed)="removeIngredient(i)">
+                                {{ingredient.value.ingredient.value}}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+                            <input
+                                #ingredientInput
+                                placeholder="Nouvel ingrédient..."
+                                [formControl]="ingredientChipControl"
+                                [matAutocomplete]="auto"
+                                [matChipInputFor]="inputChipIngredientsList"
+                            >
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedIngredient($event.option.value)">
+                            <mat-option *ngFor="let ingredient of filteredIngredients | async" [value]="ingredient">
+                                {{ingredient.value}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>    
+                    <div class="app-div-ingredientsRecipe" formArrayName="ingredientsRecipe">
+                        <div class="app-div-ingredientRecipe" *ngFor="let ingredientRecipe of ingredientsRecipe.controls; index as i">
+                            <div class="app-div-ingredientRecipe-i" [formGroupName]="i">
+                                <div class="app-ingredient">
+                                    <span>{{ingredientRecipe.value.ingredient.value}}</span>
+                                </div>
+                                <mat-form-field class="app-quantity" appearance="outline">
+                                    <mat-label>Quantité <span class="app-required">*</span></mat-label>
+                                    <input 
+                                        matInput 
+                                        formControlName="quantity" 
+                                        #inputIngredientRecipeQuantity 
+                                        type="number"
+                                        step="0.1"/>
+                                </mat-form-field>
+                                <mat-form-field class="app-unity" formGroupName="unity" appearance="outline">
+                                    <mat-label>Unité <span class="app-required">*</span></mat-label>
+                                    <mat-select formControlName="id">
+                                        <mat-option *ngFor="let unity of allUnitys" [value]="unity.id" >
+                                            {{unity.unityValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <button 
+                                    mat-mini-fab 
+                                    type="button" 
+                                    color="warn"
+                                    (click)="removeIngredient(i)">
+                                    <mat-icon>remove</mat-icon>
+                                </button> 
+                            </div>
+                        </div>
+                    </div>    
+                </mat-expansion-panel>
+            </mat-accordion> 
+            <br>
+            <mat-accordion>
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Ajouter des étapes
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>            
+                    <ol class="app-ol-steps" formArrayName="steps">
+                        <div class="app-div-steps">
+                            <div class="app-div-step" *ngFor="let step of steps.controls; index as i">
+                                <li>
+                                    <mat-form-field class="app-div-step-description" [formGroupName]="i" appearance="outline">
+                                        <mat-label>Description <span class="app-required">*</span></mat-label>
+                                        <input 
+                                            matInput 
+                                            formControlName="description" 
+                                            #inputStepDescription 
+                                            placeholder="Ex. Rajouter la viande, assaisonner et laisser cuire 5 min."/>
+                                    </mat-form-field>
+                                </li>
+                                <button 
+                                    mat-mini-fab 
+                                    type="button" 
+                                    color="warn"
+                                    (click)="removeStep(i)">
+                                    <mat-icon>remove</mat-icon>
+                                </button> 
+                            </div>
+                        </div>
+                        <div class="app-div-add-step">
+                            <div *ngFor="let step of counter(steps.length + 1); index as i">
+                                <button
+                                    mat-mini-fab 
+                                    type="button" 
+                                    color="primary" 
+                                    (click)="addStep(i)"
+                                    >
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </ol>                 
+                </mat-expansion-panel>
+            </mat-accordion> 
+            <br>
+            <mat-slide-toggle color="primary" formControlName="recipePublic" (change)="recipePublicChage()">{{recipePublicMessage}}</mat-slide-toggle>
+            <button mat-raised-button [disabled]="!addRecipeForm.valid" type="submit" color="primary">
+                Ajouter la recette
+            </button>
+        </fieldset>
+    </form>
+</main>
+
+

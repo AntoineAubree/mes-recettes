@@ -1,0 +1,318 @@
+main {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  margin-top: 90px;
+  margin-bottom: 40px;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  color:#455a64;
+  font-size: 15px;
+  border: 1px solid #455a64;
+  background: rgb(176,190,197);
+  background: linear-gradient(90deg, rgba(176,190,197,1) 0%, rgba(207,216,220,1) 50%, rgba(176,190,197,1) 100%);
+  border-radius: 5px;
+}
+
+legend {
+  font-size: 18px;
+  width: auto!important;
+  border-radius: 5px;
+  border: 1px solid #455a64;
+  padding: 8px;
+  background-color:#b0bec5;
+}
+
+fieldset > * { 
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.app-required {
+  color: #f44336;
+}
+
+
+// all buttons
+button {
+  font-size: 15px;
+  height: 40px;
+  color:  #455a64!important;
+}
+
+// all input
+::ng-deep {
+  .mat-form-field-wrapper {
+    padding: 0px!important;
+    margin: 4px 0 4px 0!important;
+    height: 55px!important;
+  }
+}
+
+::ng-deep {
+  .mat-form-field-wrapper .mat-form-field-flex {
+    margin: 0!important;
+    height: 55px!important;
+  }
+}
+
+::ng-deep {
+  .mat-form-field-wrapper .mat-form-field-outline {
+    margin: 0!important;
+    height: 55px!important;
+  }
+}
+
+mat-hint {
+  margin-top: 20px!important;
+}
+
+
+// Recipe name
+
+// input time
+.app-div-two-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-div-two-input > * {
+  width: 45%;
+}
+
+// input difficulty
+::ng-deep .app-difficulty mat-select span{
+  color: #455a64;
+}
+
+// input number of people
+.app-div-numberOfPeople {
+  width: 45%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.app-mat-numberOfPeople {
+  width: 50%;
+}
+
+.app-mat-numberOfPeople input{
+  text-align: center;
+}
+
+.app-mat-numberOfPeople::ng-deep {
+  .mat-form-field-outline-start, .mat-form-field-outline-end {
+    border-radius: 0;
+  }
+}
+
+.app-div-numberOfPeople button {
+  width: 25%;
+}
+
+.app-mat-numberOfPeople input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.app-div-numberOfPeople button {
+  margin: 0px 0 0px 0!important;
+  height: 55px;
+  border-color: #455a64;
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #455a64;
+  color: #cfd8dc!important;
+}
+
+.app-div-numberOfPeople button:hover {
+  cursor: pointer;
+}
+
+.app-button-remove-person {
+  border-width: 1px 0 1px 1px; 
+  border-radius: 5px 0 0 5px;
+}
+
+.app-button-add-person {
+  border-width: 1px 1px 1px 0;
+  border-radius: 0 5px 5px 0; 
+}
+
+
+// input add image
+.app-button-addImg {
+  width: 100%;
+}
+
+.app-input-addImg {
+  display: none;
+}
+
+.app-image-name {
+  display: flex;
+  align-items: center;
+  mat-icon {
+    margin-left:10px;
+  }
+}
+
+
+
+mat-expansion-panel{
+  background-color: #b0bec5;
+}
+
+mat-expansion-panel mat-expansion-panel-header mat-panel-title{ 
+  color:#689f38;
+  font-size: 1.2em;
+}
+
+
+// input add ingredients
+.mat-standard-chip {
+  background-color: #b0bec5;
+  color: #455a64;
+  margin-top: -8px!important;
+  margin-bottom: -2px!important;
+}
+
+.mat-option {
+  background-color: #b0bec5!important;
+  color: #455a64!important;
+}
+
+.mat-option:hover {
+  background-color:  #455a64!important;
+  color: #b0bec5!important;
+}
+
+.app-mat-form-field-chip-ingredients {
+  width: 100%;
+  font-size: 15px;
+  color:  #455a64!important;
+  margin-bottom: 8px;
+}
+
+.app-mat-form-field-chip-ingredients::ng-deep {
+  .mat-form-field-wrapper .mat-form-field-flex {
+    height: auto!important;
+  }
+}
+
+.app-mat-form-field-chip-ingredients::ng-deep {
+  .mat-form-field-wrapper {
+    height: auto!important;
+  }
+}
+
+.app-mat-form-field-chip-ingredients::ng-deep {
+  .mat-form-field-wrapper .mat-form-field-outline {
+    height: auto!important;
+  }
+}
+
+.app-div-ingredientRecipe-i {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  color:  #455a64!important;
+}
+
+.app-ingredient {
+  margin: 8px 0 0 0!important;
+  border: 1px solid #455a64;
+  color: #455a64;
+  border-radius: 5px;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  padding-left: 11px;
+  padding-right: 11px;
+  height: 53px;
+}
+
+.app-quantity {
+  width: 20%;
+}
+
+.app-quantity input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.app-unity {
+  width: 20%;
+}
+
+::ng-deep .app-unity mat-select span{
+  color: #455a64;
+}
+
+// input add step
+.app-ol-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -16px;
+}
+
+.app-div-steps {
+  width: 90%;
+}
+
+.app-div-step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.app-div-step li{
+  width: 88%;
+  color: #455a64;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.app-div-step-description {
+  width: 100%;
+  height: 70px;
+  font-size: 15px;
+  color: #455a64;
+}
+
+.app-div-add-step {
+  margin-top: -20px;
+}
+
+.app-div-add-step button {
+  margin-bottom: 30px;
+}
+
+
+
+::ng-deep {
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+      color:#455a64;
+      background-color:  #cfd8dc;
+      border-radius: 5px;
+  }
+  mat-form-field {
+      .mat-hint, input, ::placeholder, .mat-form-field-label {
+          color: #455a64;
+      }
+  }
+}
+
+br {
+  display: block;
+}

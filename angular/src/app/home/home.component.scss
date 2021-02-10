@@ -1,0 +1,20 @@
+app-search-bar {
+    position: fixed;
+    width: 100%;
+    margin-top: 75px;
+    z-index: 1;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    margin-top: 180px;
+    display: block;
+    height: 500px;
+    width: 500px;
+    z-index: 0;
+}
+

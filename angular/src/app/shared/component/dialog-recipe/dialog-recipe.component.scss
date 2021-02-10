@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'calligraffitiregular';
+    src: url('../../../../assets/font-family/Calligraffiti-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+mat-card {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    height: 100%;
+    background: rgb(96,125,139);
+    background: linear-gradient(90deg, rgba(96,125,139,1) 0%, rgba(176,190,197,1) 25%, rgba(176,190,197,1) 75%, rgba(96,125,139,1) 100%);
+}
+
+
+.app-div-right {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    width: 65%;
+}
+
+.app-header-right {
+    height: 70px;
+    background: rgb(124,179,66);
+    background: linear-gradient(90deg, rgba(124,179,66,1) 0%, rgba(174,213,129,1) 50%, rgba(124,179,66,1) 100%);
+    border-bottom-left-radius: 10px;
+    color:#455a64;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.app-header-span-right {
+    font-size: 1.3em;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-left: -60px;
+}
+
+.app-header-span-right span {
+    text-align: center;
+}
+
+.app-header-span-right span p{
+   margin-bottom: 0;
+}
+
+.app-header-right button {
+    height: 32px;
+    min-width: 32px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    color:  #b0bec5;
+}
+
+.app-p-time {
+    font-size: 1.2em;
+    margin-top: 6px;
+}
+
+.app-span-difficulty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-p-difficultys {
+    width: 130%;
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.app-p-difficultys img {
+    height: 25px;
+    width: 100%;
+ }
+
+.app-div-right mat-card-content {
+    width: 80%;
+    height: 100%;
+    overflow: auto;
+    background-image: url("../../../../assets/images/background/fond-de-hotte-effet-ardoise.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    margin: auto;
+    font-family: 'calligraffitiregular';
+    color:#cfd8dc;
+    font-size: 1.2em;
+}
+
+.app-div-steps {
+    margin: 20px;
+    font-size: 1.2em;
+}
+
+.app-div-left {
+    width: 35%;
+    padding-bottom: 20px;
+}
+
+
+
+
+.app-div-left mat-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.app-p-title {
+    text-align: center;
+    padding-top: 20px;
+    margin-right: 6px;
+    margin-left: 6px;
+    font-size: 1.8em;
+    font-weight: 600;
+    line-height: 1.5em;
+    word-spacing: 0.3em;
+}
+
+.app-div-slate {
+    font-size: 1.3em;
+    border-radius: 0 0 5px 5px;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+    width: 360px;
+    min-height: 350px;
+    height: 100%;
+    color:#455a64;
+    background-image: url("../../../../assets/images/background/knife-2879419_1280.jpg");
+    background-size: cover;
+    font-family: 'calligraffitiregular';
+    font-weight: 600;
+    overflow: auto;
+}
+
+.app-div-ingredient {
+    margin: 10px;
+    margin-top: 15px;
+}
+
+.app-img-recipe {
+    border-radius: 5px;
+    max-width: 360px;
+    max-height: 360px;
+    height: 100%;
+    object-fit: cover;
+    margin: 0!important;
+}
+
+
+@media (max-width: 1550px) { 
+
+    .app-img-recipe {
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .app-div-slate {
+        width: 300px;
+    }
+
+}
+
+@media (max-width: 1270px) { 
+
+    .app-div-right {
+        width: 100%;
+    }
+
+    .app-img-recipe {
+        max-width: 250px;
+        max-height: 250px;
+    }
+
+    .app-div-slate {
+        width: 250px;
+    }
+
+    mat-card {
+        flex-direction: column-reverse;
+        overflow: auto;
+    }
+
+}

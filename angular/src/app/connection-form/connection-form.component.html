@@ -1,0 +1,20 @@
+<main >
+    <form [formGroup]="connectionForm" (ngSubmit)="onSubmit()">
+        <fieldset id="top-page">
+            <legend>Formulaire de connexion</legend>
+            <mat-form-field class="app-mat-form-field" appearance="outline">
+                <mat-label>Pseudo <span class="app-required">*</span></mat-label>
+                <input matInput formControlName="pseudo" #inputUserPseudo placeholder="Ex. Antoine" autofocus>
+            </mat-form-field>
+            <mat-form-field class="app-mat-form-field" appearance="outline">
+                <mat-label>Mot de passe <span class="app-required">*</span></mat-label>
+                <input type="password" matInput formControlName="password" #inputUserPassword>
+            </mat-form-field>
+            <button mat-raised-button [disabled]="!connectionForm.valid" type="submit" color="primary">
+                Se connecter
+            </button>
+        </fieldset>
+    </form>
+</main>
+
+

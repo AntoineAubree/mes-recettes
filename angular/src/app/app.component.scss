@@ -1,0 +1,110 @@
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+mat-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.app-div-right-button {
+  display: flex;
+}
+
+.app-div-button {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.app-div-right-button button {
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+.app-home {
+    margin-left: 0px!important;
+    width: 45px!important;
+    height: 45px!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.app-div-left-button {
+    display: flex;
+}
+
+.app-div-left-button button {
+    margin-left: 10px;
+}
+
+
+
+.app-button-menu {
+    min-width: 40px!important;
+    width: 40px!important;
+    padding: 0;
+    height: 40px;
+}
+
+button {
+    color: #b0bec5!important;
+}
+
+button:hover {
+    color: #8bc34a!important;
+}
+
+.app-button-menu {
+    width: 45px!important;
+    height: 45px!important;
+}
+
+.app-button-menu mat-icon {
+    color:  #455a64!important;
+}
+
+.app-button-menu:hover {
+    background-color: #455a64!important;
+    mat-icon {
+        color:  #8bc34a!important;
+    }
+}
+
+
+
+::ng-deep.mat-menu-content {
+    background-color: #b0bec5!important;
+}
+
+::ng-deep.mat-menu-content button {
+    color: #455a64!important;
+}
+
+::ng-deep.mat-menu-content button mat-icon {
+    color: #455a64!important;
+}
+
+::ng-deep.mat-menu-content button:hover {
+    background-color: #455a64!important;
+    color: #b0bec5!important;
+}
+
+::ng-deep.mat-menu-content button:hover mat-icon {
+    color: #b0bec5!important;
+}
+
+mat-toolbar {
+    background: rgb(55,71,79);
+    background: linear-gradient(90deg, rgba(55,71,79,1) 0%, rgba(144,164,174,1) 50%, rgba(55,71,79,1) 100%); 
+}

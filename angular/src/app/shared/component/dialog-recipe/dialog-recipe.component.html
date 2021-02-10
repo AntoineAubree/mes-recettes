@@ -1,0 +1,81 @@
+<mat-card>
+    <div class="app-div-left">
+        <mat-card-content> 
+            <div class="app-div-slate">     
+                <div class="app-div-ingredients">
+                    <div class="app-div-ingredient" *ngFor="let ingredientRecipe of data.recipeDialog.ingredientsRecipe">
+                        <span>
+                            {{ingredientRecipe.ingredient.value}} : 
+                        </span>
+                        <span>
+                            {{ingredientRecipe.quantity}} 
+                        </span>
+                        <span>
+                            {{ingredientRecipe.unity.unityValue}}
+                        </span>
+                    </div>
+                </div> 
+            </div>
+            <div *ngIf="data.recipeDialog.imageRecipe; else imageRecipeNotAvailable">
+                <img class="app-img-recipe" mat-card-image src="data:image/jpeg;base64,{{data.recipeDialog.imageRecipe.picByte}}"
+                    alt="Photo of {{data.recipeDialog.name}}">
+            </div>
+            <ng-template #imageRecipeNotAvailable>
+                <img class="app-img-recipe" mat-card-image src="data:image/jpeg;base64,{{data.imageRecipeDefault.picByte}}"
+                    alt="Photo of {{data.recipeDialog.name}}">
+            </ng-template>
+        </mat-card-content>
+    </div>
+    <div class="app-div-right"> 
+        <mat-card-header class="app-header-right">
+            <span class="app-header-span-right">
+                <span>
+                    <p>
+                        temps de préparation : 
+                    </p>
+                    <p class="app-p-time">
+                        {{getFormatTime(data.recipeDialog.preparationTime)}}
+                    </p>
+                </span>
+                <span>
+                    <p>
+                        temps de cuisson : 
+                    </p>
+                    <p class="app-p-time">
+                        {{getFormatTime(data.recipeDialog.cookingTime)}}
+                    </p>
+                </span>
+                <span class="app-span-difficulty">
+                    <p>
+                       difficulté : 
+                    </p>
+                    <p class="app-p-difficultys">
+                        <span *ngFor="let item of counter(data.recipeDialog.difficulty.valueDifficulty)"><img src="../../assets/images/icones/chef_true.png"/></span>
+                        <span *ngFor="let item of counter(3-data.recipeDialog.difficulty.valueDifficulty)"><img src="../../assets/images/icones/chef_false.png"/></span>
+                    </p>
+                </span>
+            </span>
+            <button 
+                mat-raised-button 
+                color="accent"
+                (click)="closeDialog()"
+            >
+                <mat-icon>
+                    clear
+                </mat-icon>
+            </button>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="app-p-title">
+                {{data.recipeDialog.name | uppercase}}
+            </p>  
+            <div class="app-div-steps" *ngFor="let step of data.recipeDialog.steps">
+                {{step.orderStep}}
+                <span>
+                    . 
+                </span>
+                {{step.description}}
+            </div>
+        </mat-card-content>
+    </div>
+</mat-card>

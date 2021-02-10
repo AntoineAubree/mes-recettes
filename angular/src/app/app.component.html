@@ -1,0 +1,68 @@
+<header>
+    <mat-toolbar>
+        <div class="app-div-right-button">
+            <button class="app-home" mat-icon-button color="accent" routerLink="/accueil">
+                <mat-icon>home</mat-icon>
+            </button>
+            <div class="app-div-button">
+                <div>
+                    <button mat-button color="accent" routerLink="/recettes" (click)="clickPublicRecipes()">
+                        Recettes publiques
+                    </button>
+                </div>
+                <div [hidden]="!user.pseudo">
+                    <button mat-button color="accent" routerLink="/recettes" (click)="clickMyRecipes()">
+                        Recettes perso
+                    </button>
+                </div>
+                <div [hidden]="!user.pseudo">
+                    <button mat-button color="accent" routerLink="/ajouterrecette">
+                        Ajouter une recette
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="app-div-left-button">
+            <button class="app-button-menu" mat-mini-fab color="primary" [matMenuTriggerFor]="menuUser">
+                <mat-icon>person</mat-icon>
+            </button>
+            <mat-menu #menuUser="matMenu">
+                <div [hidden]="user.pseudo">
+                    <button 
+                        mat-menu-item
+                        routerLink="/connexion">
+                        <mat-icon>lock_open</mat-icon>
+                        <span>Se connecter</span>
+                    </button>
+                </div>
+                <div [hidden]="user.pseudo">
+                    <button 
+                        mat-menu-item
+                        routerLink="/inscription">
+                        <mat-icon>person_add</mat-icon>
+                        <span>S'inscrire</span>
+                    </button>
+                </div>
+                <div [hidden]="!user.pseudo">
+                    <button 
+                        mat-menu-item
+                        routerLink="/inscription">
+                        <mat-icon>person_outline</mat-icon>
+                        <span>Profil</span>
+                    </button>
+                </div>
+                <div [hidden]="!user.pseudo">
+                    <button 
+                        (click)="disconnect()"
+                        mat-menu-item
+                        routerLink="/accueil">
+                        <mat-icon>lock</mat-icon>
+                        <span>Se déconnecter</span>
+                    </button>
+                </div>
+            </mat-menu>    
+        </div>
+    </mat-toolbar>
+</header>
+
+<router-outlet></router-outlet>

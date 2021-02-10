@@ -1,0 +1,89 @@
+<app-search-bar></app-search-bar>
+<main>
+    <div [hidden]="listRecipes.length>0">
+        Aucun résultat
+    </div>
+    <div class="app-div-cards">
+        <mat-card class="app-card" *ngFor="let recipe of listRecipes">
+            <mat-card-header>
+                <mat-card-title>{{recipe.name | uppercase}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="app-div-img-recipe">
+                    <div *ngIf="recipe.imageRecipe; else imageRecipeNotAvailable">
+                        <img (click)="openModal(recipe)" mat-card-image src="data:image/jpeg;base64,{{recipe.imageRecipe.picByte}}"
+                            alt="Photo of {{recipe.name}}">
+                    </div>
+                    <ng-template #imageRecipeNotAvailable>
+                        <img (click)="openModal(recipe)" mat-card-image src="data:image/jpeg;base64,{{imageRecipeDefault.picByte}}"
+                            alt="Photo of {{recipe.name}}">
+                    </ng-template>
+                </div>
+                <div class="app-div-icon">
+                    <span class="app-span-icon app-span-time">
+                        <span><mat-icon>query_builder</mat-icon></span>
+                        <span>
+                            {{getFormatTime(recipe.cookingTime + recipe.preparationTime)}}            
+                        </span>
+                    </span>
+                    <span class="app-span-icon">
+                        <span>Difficulté</span>
+                        <span class="app-span-icon-difficulty">
+                            <span *ngFor="let item of counter(recipe.difficulty.valueDifficulty)"><img src="../../assets/images/icones/chef_true.png"/></span>
+                            <span *ngFor="let item of counter(3-recipe.difficulty.valueDifficulty)"><img src="../../assets/images/icones/chef_false.png"/></span>
+                        </span>
+                    </span>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="app-div-bottom-button">
+                    <div class="app-div-bottom-menu" [hidden]="recipe.user.id !== idUser">
+                    </div>
+                    <div class="app-div-bottom-favorite">
+                        <button mat-mini-fab color="accent">
+                            <mat-icon>favorite</mat-icon>
+                        </button>
+                    </div>
+                    <div class="app-div-bottom-menu" [hidden]="recipe.user.id !== idUser">
+                        <button mat-icon-button color="accent" [matMenuTriggerFor]="menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>
+                              <mat-icon>settings</mat-icon>
+                              <span>Modifier</span>
+                            </button>
+                            <button mat-menu-item>
+                              <mat-icon>delete</mat-icon>
+                              <span>Supprimer</span>
+                            </button>
+                            <button class="app-button-recipe-public" mat-menu-item>
+                                <span [hidden]="recipe.recipePublic">
+                                    <mat-icon >visibility_off</mat-icon>
+                                </span>
+                                <span [hidden]="!recipe.recipePublic">
+                                    <mat-icon >visibility</mat-icon>
+                                </span>
+                                <mat-slide-toggle 
+                                    (change)="changeRecipePublicInDataBase(recipe)"
+                                    color="primary" 
+                                    [(ngModel)]="recipe.recipePublic">
+                                    <span [hidden]="recipe.recipePublic">Recette privée</span>
+                                    <span [hidden]="!recipe.recipePublic">Recette publique</span>
+                                </mat-slide-toggle>      
+                            </button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="app-div-button-arrow">
+        <button (click)="decrementIndexPage()" mat-fab disabled="{{leftButtonDisable}}">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button (click)="incrementIndexPage()" mat-fab disabled="{{rightButtonDisable}}">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+</main>

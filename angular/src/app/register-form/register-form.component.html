@@ -1,0 +1,27 @@
+<main >
+    <form [formGroup]="addRegisterForm" (ngSubmit)="onSubmit()">
+        <fieldset id="top-page">
+            <legend>Formulaire d'inscription</legend>
+            <mat-form-field class="app-mat-form-field" appearance="outline">
+                <mat-label>Pseudo <span class="app-required">*</span></mat-label>
+                <input matInput formControlName="pseudo" #inputUserPseudo placeholder="Ex. Antoine" autofocus>
+                <mat-hint>Min 3 caractères<span [hidden]="pseudoAvailable"> | </span><span [hidden]="pseudoAvailable" class="app-required"> pseudo non disponible </span></mat-hint>
+            </mat-form-field>
+            <mat-form-field class="app-mat-form-field" appearance="outline">
+                <mat-label>Mot de passe <span class="app-required">*</span></mat-label>
+                <input type="password" matInput formControlName="password" #inputUserPassword (keyup)="confirmPasswordChange()">
+                <mat-hint>Min 8 caractères<span [hidden]="!passwordValid"> | </span><span [hidden]="!passwordValid" class="app-valid"> mot de passe valide </span></mat-hint>
+            </mat-form-field>
+            <mat-form-field class="app-mat-form-field" appearance="outline">
+                <mat-label>Confirmation du mot de passe <span class="app-required">*</span></mat-label>
+                <input type="password" matInput formControlName="confirmPassword" #inputUserConfirmPassword (keyup)="confirmPasswordChange()">
+                <mat-hint>Min 8 caractères<span [hidden]="!confirmPassword"> | </span><span [hidden]="!confirmPassword" class="app-valid"> mots de passe identiques </span></mat-hint>
+            </mat-form-field>
+            <button mat-raised-button [disabled]="!addRegisterForm.valid" type="submit" color="primary">
+                S'inscrire
+            </button>
+        </fieldset>
+    </form>
+</main>
+
+

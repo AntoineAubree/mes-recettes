@@ -1,0 +1,26 @@
+<section class="app-section-search">
+    <mat-form-field class="app-mat-form-field" appearance="outline">
+        <mat-label>Rechercher</mat-label>
+        <input 
+            [(ngModel)]="recipeSought"
+            (keydown.enter)="search(recipeSought)"
+            matInput
+        >
+        <span class="app-span-button" matSuffix>
+            <button 
+                mat-mini-fab
+                (click)="clear()"
+            >
+                <mat-icon      
+                >clear</mat-icon>
+            </button>
+            <button 
+                mat-mini-fab   
+                (click)="search(recipeSought)"
+            >
+                <mat-icon 
+                >search</mat-icon>
+            </button>
+        </span>
+    </mat-form-field>
+</section>

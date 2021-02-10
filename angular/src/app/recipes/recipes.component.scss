@@ -1,0 +1,219 @@
+app-search-bar {
+    position: fixed;
+    width: 100%;
+    margin-top: 75px;
+    z-index: 3;
+    top: 0;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 180px;
+}
+
+.app-div-cards {
+    width: 900px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+mat-card {
+    width: 390px;
+    margin-bottom: 48px;
+    border: 2px solid #689f38;
+    z-index: 2;
+    background: rgb(176,190,197);
+    background: linear-gradient(90deg, rgba(176,190,197,1) 0%, rgba(207,216,220,1) 50%, rgba(176,190,197,1) 100%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+mat-card-header {
+    padding-bottom: 20px;
+    height: 35px;
+    color:#689f38;
+    
+}
+
+mat-card-content {
+    color:#689f38;
+    margin-bottom: 0px; 
+}
+
+
+.app-div-img-recipe {
+    width: 390px;
+    height: 390px;
+}
+
+mat-card-content img {
+    border-radius: 5px;
+    max-width: 390px;
+    max-height: 390px;
+    height: 100%;
+    margin: auto;
+    object-fit: cover;
+}
+
+mat-card-content img:hover {
+    cursor: pointer;
+}
+
+mat-card-actions {
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.app-div-bottom-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.app-div-bottom-menu {
+    width: 10%;
+}
+
+.app-div-bottom-favorite {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.app-div-bottom-favorite mat-icon {
+    color: #b0bec5;
+}
+
+
+.app-div-icon {
+    margin-top: 5px;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.app-span-icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    font-size: 1.6em;
+}
+
+.app-span-icon img {
+    height: 28px;
+    width: 100%;
+}
+
+.app-span-icon > span {
+    display: flex;
+    align-items: center;
+}
+
+.app-span-icon-difficulty {
+    width: 130%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.app-button-recipe-public, mat-slide-toggle {
+    display: flex;
+    align-items: center;
+}
+
+
+// Arrow
+
+.app-div-button-arrow {
+    position: fixed;
+    width: 1200px;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.app-div-button-arrow button {
+    margin-bottom: 50px;
+    color: #b0bec5;
+}
+
+
+@media (max-width: 1550px) { 
+
+    .app-div-cards {
+        width: 800px;
+    }
+
+    mat-card {
+        width: 340px;
+    }
+
+    .app-div-img-recipe {
+        width: 340px;
+        height: 340px;
+    }
+
+    mat-card-content img {
+        max-width: 340px;
+        max-height: 340px;
+    }
+
+    .app-div-button-arrow {
+        width: 1000px;
+    }
+
+}
+
+@media (max-width: 1100px) { 
+
+    .app-div-cards {
+        width: 500px;
+        justify-content: center;
+    }
+
+    mat-card {
+        width: 390px;
+    }
+
+    .app-div-img-recipe {
+        width: 390px;
+        height: 390px;
+    }
+
+    mat-card-content img {
+        max-width: 390px;
+        max-height: 390px;
+    }
+
+    .app-div-button-arrow {
+        width: 800px;
+    }
+
+
+}
+
+
+@media (max-width: 960px) { 
+
+    .app-div-button-arrow {
+        width: 426px;
+    }
+
+    .app-div-button-arrow button {
+        margin-bottom: 0px;
+    }
+
+}
